@@ -1,38 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# EtherCerts-Web
 
-## Getting Started
+A decentralized course certification platform that leverages blockchain technology to issue, manage, and verify educational certificates. Built with Next.js and Ethereum smart contracts.
 
-First, run the development server:
+## 🌟 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- **Web3 Authentication**: Sign in securely using MetaMask or Coinbase Wallet
+- **Issue Certificates**: Authorized issuers can create blockchain-verified certificates
+- **Certificate Verification**: Verify certificate authenticity on-chain
+- **Encrypted Data**: Certificate details are encrypted and stored on the blockchain
+- **Role-Based Access**: Owner, Authority, and Issuer roles with different permissions
+- **Shareable Links**: Generate secure, shareable certificate links with decryption keys
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js, React
+- **Styling**: Tailwind CSS
+- **Web3**: Wagmi, ethers.js
+- **Database**: Prisma ORM
+- **Authentication**: Wallet-based signature authentication
+- **Blockchain**: Ethereum (Hardhat local network / Goerli testnet)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 📋 Prerequisites
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Node.js (v14 or higher)
+- MetaMask or Coinbase Wallet browser extension
+- A running instance of the smart contract (see [ethercerts-hardhat](../ethercerts-hardhat))
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🚀 Getting Started
 
-## Learn More
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/YashChaudhari241/course-certification.git
+   cd course-certification
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Configure the database**
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+4. **Set up environment variables**
+   Create a `.env` file in the root directory with necessary configurations.
 
-## Deploy on Vercel
+5. **Update contract address**
+   Ensure `hardhat.json` contains the deployed contract address from the Hardhat repository.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+6. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+7. **Open your browser**
+   Navigate to `http://localhost:3000`
+
+## 📱 Usage
+
+### For Students
+1. Connect your wallet (MetaMask/Coinbase)
+2. Sign the authentication message
+3. View all certificates issued to your wallet address
+4. Share certificate links with decryption keys
+
+### For Issuers
+1. Connect your authorized issuer wallet
+2. Navigate to the issuer page
+3. Select a student and enter course details
+4. Issue certificate - creates an encrypted on-chain record
+
+### For Authorities
+1. Manage authorized issuers
+2. Add or remove issuer permissions
+3. View authority status on the blockchain
+
+## 🔗 Integration with Smart Contract
+
+This frontend integrates with the Certify smart contract. Make sure to:
+- Deploy the contract from [ethercerts-hardhat](../ethercerts-hardhat)
+- Update `hardhat.json` with the deployed contract address
+- Ensure the contract ABI is accessible in the artifacts folder
+
+## 🔐 Security Features
+
+- Wallet signature-based authentication
+- Encrypted certificate data on-chain
+- Role-based access control
+- Nonce-based replay attack prevention
